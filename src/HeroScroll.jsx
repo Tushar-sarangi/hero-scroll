@@ -1,4 +1,3 @@
-// src/HeroScroll.jsx
 import React, { useState } from "react";
 
 const slidesData = [
@@ -16,11 +15,13 @@ export default function HeroScroll() {
         width: "100%",
         height: "100%",
         position: "relative",
-        overflow: "hidden", // <-- no scrollbars
+        overflow: "hidden", // remove any scrollbars
+        margin: 0,
+        padding: 0,
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        background: "rgba(255,255,255,0.03)", // minimalistic background
+        background: "rgba(255,255,255,0.03)",
       }}
     >
       {/* Slides stacked */}
@@ -36,7 +37,7 @@ export default function HeroScroll() {
               transform: `translate(-50%, -50%) scale(${isActive ? 1 : 0.8})`,
               opacity: isActive ? 1 : 0,
               transition: "transform 0.5s ease, opacity 0.5s ease",
-              width: "70%",
+              width: "80%",       // keep inside the container
               maxWidth: 800,
               height: "60%",
               borderRadius: 32,
@@ -59,11 +60,12 @@ export default function HeroScroll() {
       <div
         style={{
           position: "absolute",
-          bottom: 40,
+          bottom: 50, // slightly above bottom
           left: "50%",
           transform: "translateX(-50%)",
           display: "flex",
           gap: 16,
+          pointerEvents: "auto",
         }}
       >
         {slidesData.map((_, i) => (
